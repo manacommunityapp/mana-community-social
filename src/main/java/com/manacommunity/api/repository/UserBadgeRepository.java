@@ -1,5 +1,7 @@
 package com.manacommunity.api.repository;
 
+import com.manacommunity.common.enums.*;
+import com.manacommunity.api.model.*;
 import com.manacommunity.api.model.UserBadge;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -10,3 +12,5 @@ public interface UserBadgeRepository extends JpaRepository<UserBadge, Long> {
     List<UserBadge> findByUserIdOrderByEarnedAtDesc(Long userId);
     boolean existsByUserIdAndBadgeType(Long userId, String badgeType);
 }
+
+

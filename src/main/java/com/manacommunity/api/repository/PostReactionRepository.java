@@ -1,7 +1,9 @@
 package com.manacommunity.api.repository;
 
+import com.manacommunity.common.enums.*;
+import com.manacommunity.api.model.*;
 import com.manacommunity.api.model.PostReaction;
-import com.manacommunity.api.model.ReactionType;
+import com.manacommunity.common.enums.ReactionType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -22,3 +24,6 @@ public interface PostReactionRepository extends JpaRepository<PostReaction, Long
 
     long countByPostId(Long postId);
 }
+
+
+

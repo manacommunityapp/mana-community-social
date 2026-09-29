@@ -1,6 +1,8 @@
 package com.manacommunity.api.model;
 
-import com.manacommunity.api.user.model.AppUser;
+import com.manacommunity.common.enums.*;
+import com.manacommunity.common.model.Community;
+import com.manacommunity.common.user.model.AppUser;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -135,6 +137,18 @@ public class Post {
     @Column(name = "event_venue", length = 500)
     private String eventVenue;
 
+    @Column(name = "category", length = 100)
+    private String category;
+
+    @Column(name = "status", length = 50)
+    private String status;
+
+    @Column(name = "rating")
+    private Double rating;
+
+    @Column(name = "metadata", columnDefinition = "TEXT")
+    private String metadata;
+
     @Column(name = "is_deleted", nullable = false)
     @Builder.Default
     private boolean deleted = false;
@@ -170,3 +184,6 @@ public class Post {
         updatedAt = LocalDateTime.now();
     }
 }
+
+
+

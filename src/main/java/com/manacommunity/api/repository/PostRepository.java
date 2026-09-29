@@ -1,7 +1,10 @@
 package com.manacommunity.api.repository;
 
+import com.manacommunity.common.enums.*;
+import com.manacommunity.api.model.*;
+import com.manacommunity.common.model.Community;
 import com.manacommunity.api.model.Post;
-import com.manacommunity.api.model.PostType;
+import com.manacommunity.common.enums.PostType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,6 +17,9 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     Page<Post> findByCommunityIdAndDeletedFalseOrderByPinnedDescCreatedAtDesc(Long communityId, Pageable pageable);
     Page<Post> findByCommunityIdAndPostTypeAndDeletedFalseOrderByCreatedAtDesc(Long communityId, PostType postType, Pageable pageable);
+    Page<Post> findByCommunityIdAndPostTypeInAndDeletedFalseOrderByPinnedDescCreatedAtDesc(Long communityId, java.util.Collection<PostType> postTypes, Pageable pageable);
+    Page<Post> findByCommunityIdAndCategoryAndDeletedFalseOrderByPinnedDescCreatedAtDesc(Long communityId, String category, Pageable pageable);
+    Page<Post> findByCommunityIdAndStatusAndDeletedFalseOrderByPinnedDescCreatedAtDesc(Long communityId, String status, Pageable pageable);
     Page<Post> findByCommunityIdAndOfficialTrueAndDeletedFalseOrderByCreatedAtDesc(Long communityId, Pageable pageable);
     Page<Post> findByGroupIdAndDeletedFalseOrderByPinnedDescCreatedAtDesc(Long groupId, Pageable pageable);
 
@@ -28,3 +34,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     long countByCommunityIdAndDeletedFalse(Long communityId);
 }
+
+
+
+

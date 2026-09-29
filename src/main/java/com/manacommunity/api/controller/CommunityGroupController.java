@@ -1,13 +1,14 @@
 package com.manacommunity.api.controller;
 
+import com.manacommunity.common.enums.*;
 import com.manacommunity.api.dto.GroupRequest;
 import com.manacommunity.api.dto.GroupResponse;
 import com.manacommunity.api.dto.PostResponse;
 import com.manacommunity.api.service.CommunityGroupService;
 import com.manacommunity.api.service.FeedService;
 import com.manacommunity.api.service.EngagementService;
-import com.manacommunity.api.user.model.AppUser;
-import com.manacommunity.api.user.security.UserPrincipal;
+import com.manacommunity.common.user.model.AppUser;
+import com.manacommunity.common.user.security.UserPrincipal;
 import com.manacommunity.api.user.service.LoggedInUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -110,3 +111,5 @@ public class CommunityGroupController {
         return ResponseEntity.ok(feedService.getGroupFeed(currentUser, id, page, size));
     }
 }
+
+

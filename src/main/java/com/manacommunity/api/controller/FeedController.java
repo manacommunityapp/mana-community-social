@@ -1,9 +1,10 @@
 package com.manacommunity.api.controller;
 
+import com.manacommunity.common.enums.*;
 import com.manacommunity.api.dto.*;
-import com.manacommunity.api.model.ReactionType;
-import com.manacommunity.api.user.model.AppUser;
-import com.manacommunity.api.user.security.UserPrincipal;
+import com.manacommunity.common.enums.ReactionType;
+import com.manacommunity.common.user.model.AppUser;
+import com.manacommunity.common.user.security.UserPrincipal;
 import com.manacommunity.api.service.FeedService;
 import com.manacommunity.api.service.EngagementService;
 import com.manacommunity.api.user.service.LoggedInUserService;
@@ -34,6 +35,15 @@ public class FeedController {
         AppUser currentUser = loggedInUserService.resolve(principal);
         int safeSize = Math.min(Math.max(size, 1), 50);
         Page<PostResponse> response = feedService.getFeed(currentUser, type, Math.max(page, 0), safeSize);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PostResponse> getPostById(
+            @AuthenticationPrincipal UserPrincipal principal,
+            @PathVariable Long id) {
+        AppUser currentUser = loggedInUserService.resolve(principal);
+        PostResponse response = feedService.getPostById(currentUser, id);
         return ResponseEntity.ok(response);
     }
 
@@ -194,3 +204,5 @@ public class FeedController {
         return ResponseEntity.ok().build();
     }
 }
+
+

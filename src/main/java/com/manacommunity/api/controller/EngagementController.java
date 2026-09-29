@@ -1,11 +1,12 @@
 package com.manacommunity.api.controller;
 
+import com.manacommunity.common.enums.*;
 import com.manacommunity.api.dto.EngagementScoreResponse;
 import com.manacommunity.api.dto.FeedAnalyticsResponse;
 import com.manacommunity.api.dto.TrendingResponse;
 import com.manacommunity.api.service.EngagementService;
-import com.manacommunity.api.user.model.AppUser;
-import com.manacommunity.api.user.security.UserPrincipal;
+import com.manacommunity.common.user.model.AppUser;
+import com.manacommunity.common.user.security.UserPrincipal;
 import com.manacommunity.api.user.service.LoggedInUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -52,3 +53,5 @@ public class EngagementController {
         return ResponseEntity.ok(engagementService.getAnalytics(currentUser));
     }
 }
+
+

@@ -1,5 +1,6 @@
 package com.manacommunity.api.dto;
 
+import com.manacommunity.common.enums.*;
 import jakarta.validation.constraints.NotBlank;
 
 public record GroupRequest(
@@ -14,3 +15,4 @@ public record GroupRequest(
     String rules,
     String tags
 ) {}
+

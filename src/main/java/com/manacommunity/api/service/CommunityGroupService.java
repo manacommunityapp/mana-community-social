@@ -1,15 +1,19 @@
 package com.manacommunity.api.service;
 
+import com.manacommunity.common.enums.*;
+import com.manacommunity.api.model.*;
+import com.manacommunity.common.model.Community;
+import com.manacommunity.common.model.Role;
 import com.manacommunity.api.dto.GroupRequest;
 import com.manacommunity.api.dto.GroupResponse;
 import com.manacommunity.api.exception.InvalidInputException;
-import com.manacommunity.api.exception.ResourceNotFoundException;
-import com.manacommunity.api.exception.UnauthorizedActionException;
+import com.manacommunity.common.exception.ResourceNotFoundException;
+import com.manacommunity.common.exception.UnauthorizedActionException;
 import com.manacommunity.api.model.CommunityGroup;
 import com.manacommunity.api.model.GroupMembership;
 import com.manacommunity.api.repository.CommunityGroupRepository;
 import com.manacommunity.api.repository.GroupMembershipRepository;
-import com.manacommunity.api.user.model.AppUser;
+import com.manacommunity.common.user.model.AppUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -226,3 +230,8 @@ public class CommunityGroupService {
         java.time.LocalDateTime joinedAt
     ) {}
 }
+
+
+
+
+

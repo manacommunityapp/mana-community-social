@@ -1,5 +1,6 @@
 package com.manacommunity.api.dto;
 
+import com.manacommunity.common.enums.*;
 import java.time.LocalDateTime;
 
 public record GroupResponse(
@@ -23,3 +24,4 @@ public record GroupResponse(
     String memberRole,
     LocalDateTime createdAt
 ) {}
+

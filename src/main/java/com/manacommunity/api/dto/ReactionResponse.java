@@ -1,6 +1,7 @@
 package com.manacommunity.api.dto;
 
-import com.manacommunity.api.model.ReactionType;
+import com.manacommunity.common.enums.*;
+import com.manacommunity.common.enums.ReactionType;
 
 import java.util.Map;
 
@@ -9,3 +10,5 @@ public record ReactionResponse(
     Map<String, Long> reactionCounts,
     ReactionType currentUserReaction
 ) {}
+
+

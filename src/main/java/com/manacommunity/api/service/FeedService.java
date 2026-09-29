@@ -1,11 +1,14 @@
 package com.manacommunity.api.service;
 
-import com.manacommunity.api.user.model.AppUser;
+import com.manacommunity.common.enums.*;
+import com.manacommunity.common.model.Community;
+import com.manacommunity.common.model.Role;
+import com.manacommunity.common.user.model.AppUser;
 
 import com.manacommunity.api.dto.*;
 import com.manacommunity.api.exception.InvalidInputException;
-import com.manacommunity.api.exception.ResourceNotFoundException;
-import com.manacommunity.api.exception.UnauthorizedActionException;
+import com.manacommunity.common.exception.ResourceNotFoundException;
+import com.manacommunity.common.exception.UnauthorizedActionException;
 import com.manacommunity.api.model.*;
 import com.manacommunity.api.repository.*;
 import lombok.RequiredArgsConstructor;
@@ -52,6 +55,31 @@ public class FeedService {
             posts = postRepository.findByCommunityIdAndOfficialTrueAndDeletedFalseOrderByCreatedAtDesc(communityId, pageable);
         } else if ("BOOKMARKED".equalsIgnoreCase(type)) {
             posts = postRepository.findBookmarkedByUser(currentUser.getId(), pageable);
+        } else if ("NOTICES".equalsIgnoreCase(type) || "ANNOUNCEMENTS".equalsIgnoreCase(type)) {
+            posts = postRepository.findByCommunityIdAndPostTypeInAndDeletedFalseOrderByPinnedDescCreatedAtDesc(
+                    communityId,
+                    List.of(PostType.ANNOUNCEMENT, PostType.EMERGENCY, PostType.MAINTENANCE, PostType.COMMITTEE_NOTICE, PostType.COMMUNITY_NEWS),
+                    pageable);
+        } else if ("SPORTS_EVENTS".equalsIgnoreCase(type) || "ACTIVITIES".equalsIgnoreCase(type)) {
+            posts = postRepository.findByCommunityIdAndPostTypeInAndDeletedFalseOrderByPinnedDescCreatedAtDesc(
+                    communityId,
+                    List.of(PostType.SPORTS, PostType.EVENT),
+                    pageable);
+        } else if ("QA_RECOMMENDATIONS".equalsIgnoreCase(type) || "COMMUNITY_HELP".equalsIgnoreCase(type)) {
+            posts = postRepository.findByCommunityIdAndPostTypeInAndDeletedFalseOrderByPinnedDescCreatedAtDesc(
+                    communityId,
+                    List.of(PostType.QUESTION, PostType.RECOMMENDATION, PostType.LOST_FOUND),
+                    pageable);
+        } else if ("MARKETPLACE_FEED".equalsIgnoreCase(type) || "COMMERCE".equalsIgnoreCase(type)) {
+            posts = postRepository.findByCommunityIdAndPostTypeInAndDeletedFalseOrderByPinnedDescCreatedAtDesc(
+                    communityId,
+                    List.of(PostType.MARKETPLACE, PostType.CLASSIFIED, PostType.FOOD, PostType.VENDOR_PROMOTION, PostType.PROPERTY),
+                    pageable);
+        } else if ("ACHIEVEMENTS".equalsIgnoreCase(type)) {
+            posts = postRepository.findByCommunityIdAndPostTypeInAndDeletedFalseOrderByPinnedDescCreatedAtDesc(
+                    communityId,
+                    List.of(PostType.ACHIEVEMENT, PostType.APPRECIATION),
+                    pageable);
         } else {
             try {
                 PostType postType = PostType.valueOf(type.toUpperCase());
@@ -61,6 +89,18 @@ public class FeedService {
             }
         }
         return posts.map(post -> toPostResponse(post, currentUser.getId()));
+    }
+
+    @Transactional
+    public PostResponse getPostById(AppUser currentUser, Long postId) {
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new ResourceNotFoundException("Post", postId));
+        if (post.isDeleted()) {
+            throw new ResourceNotFoundException("Post", postId);
+        }
+        post.setViewsCount(post.getViewsCount() + 1);
+        postRepository.save(post);
+        return toPostResponse(post, currentUser.getId());
     }
 
     @Transactional(readOnly = true)
@@ -108,7 +148,11 @@ public class FeedService {
                 .linkImage(request.linkImage())
                 .eventDate(request.eventDate())
                 .eventEndDate(request.eventEndDate())
-                .eventVenue(request.eventVenue());
+                .eventVenue(request.eventVenue())
+                .category(request.category())
+                .status(request.status())
+                .rating(request.rating())
+                .metadata(request.metadata());
 
         if (request.groupId() != null) {
             builder.group(CommunityGroup.builder().id(request.groupId()).build());
@@ -543,6 +587,10 @@ public class FeedService {
                 post.getEventDate(),
                 post.getEventEndDate(),
                 post.getEventVenue(),
+                post.getCategory(),
+                post.getStatus(),
+                post.getRating(),
+                post.getMetadata(),
                 mediaResponses,
                 groupSummary,
                 post.getModerationStatus()
@@ -629,3 +677,6 @@ public class FeedService {
         return "Verified Member";
     }
 }
+
+
+

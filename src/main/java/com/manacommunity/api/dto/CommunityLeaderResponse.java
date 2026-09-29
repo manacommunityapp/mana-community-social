@@ -1,5 +1,6 @@
 package com.manacommunity.api.dto;
 
+import com.manacommunity.common.enums.*;
 public record CommunityLeaderResponse(
         Long id,
         Long userId,
@@ -13,3 +14,4 @@ public record CommunityLeaderResponse(
         String block,
         Integer displayOrder
 ) {}
+

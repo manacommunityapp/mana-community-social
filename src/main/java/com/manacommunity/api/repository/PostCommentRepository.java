@@ -1,5 +1,7 @@
 package com.manacommunity.api.repository;
 
+import com.manacommunity.common.enums.*;
+import com.manacommunity.api.model.*;
 import com.manacommunity.api.model.PostComment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,3 +14,5 @@ public interface PostCommentRepository extends JpaRepository<PostComment, Long> 
     Page<PostComment> findByPostIdOrderByCreatedAtAsc(Long postId, Pageable pageable);
     long countByPostIdAndDeletedFalse(Long postId);
 }
+
+

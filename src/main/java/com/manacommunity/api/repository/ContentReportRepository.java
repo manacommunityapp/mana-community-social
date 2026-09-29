@@ -1,5 +1,7 @@
 package com.manacommunity.api.repository;
 
+import com.manacommunity.common.enums.*;
+import com.manacommunity.api.model.*;
 import com.manacommunity.api.model.ContentReport;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,3 +13,5 @@ public interface ContentReportRepository extends JpaRepository<ContentReport, Lo
     boolean existsByContentTypeAndContentIdAndReportedById(String contentType, Long contentId, Long reportedById);
     long countByCommunityIdAndStatus(Long communityId, String status);
 }
+
+

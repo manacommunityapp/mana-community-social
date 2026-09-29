@@ -1,9 +1,10 @@
 package com.manacommunity.api.dto;
 
-import com.manacommunity.api.model.PostType;
-import com.manacommunity.api.model.PostVisibility;
-import com.manacommunity.api.model.PostPriority;
-import com.manacommunity.api.model.ReactionType;
+import com.manacommunity.common.enums.*;
+import com.manacommunity.common.enums.PostType;
+import com.manacommunity.common.enums.PostVisibility;
+import com.manacommunity.common.enums.PostPriority;
+import com.manacommunity.common.enums.ReactionType;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -51,6 +52,10 @@ public record PostResponse(
     LocalDateTime eventDate,
     LocalDateTime eventEndDate,
     String eventVenue,
+    String category,
+    String status,
+    Double rating,
+    String metadata,
     List<MediaResponse> media,
     GroupSummary group,
     String moderationStatus
@@ -72,3 +77,5 @@ public record PostResponse(
         String groupType
     ) {}
 }
+
+

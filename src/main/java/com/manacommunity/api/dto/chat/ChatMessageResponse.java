@@ -1,5 +1,6 @@
 package com.manacommunity.api.dto.chat;
 
+import com.manacommunity.common.enums.*;
 import java.time.LocalDateTime;
 
 /**
@@ -15,3 +16,4 @@ public record ChatMessageResponse(
         String content,
         LocalDateTime createdAt
 ) {}
+

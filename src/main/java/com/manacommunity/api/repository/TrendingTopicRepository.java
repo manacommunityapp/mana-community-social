@@ -1,5 +1,7 @@
 package com.manacommunity.api.repository;
 
+import com.manacommunity.common.enums.*;
+import com.manacommunity.api.model.*;
 import com.manacommunity.api.model.TrendingTopic;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,3 +12,5 @@ public interface TrendingTopicRepository extends JpaRepository<TrendingTopic, Lo
     List<TrendingTopic> findByCommunityIdOrderByScoreDesc(Long communityId, Pageable pageable);
     void deleteByCommunityId(Long communityId);
 }
+
+

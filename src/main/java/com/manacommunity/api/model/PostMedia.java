@@ -1,5 +1,6 @@
 package com.manacommunity.api.model;
 
+import com.manacommunity.common.enums.*;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -58,3 +59,4 @@ public class PostMedia {
         createdAt = LocalDateTime.now();
     }
 }
+

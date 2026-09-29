@@ -1,8 +1,9 @@
 package com.manacommunity.api.dto;
 
-import com.manacommunity.api.model.PostType;
-import com.manacommunity.api.model.PostVisibility;
-import com.manacommunity.api.model.PostPriority;
+import com.manacommunity.common.enums.*;
+import com.manacommunity.common.enums.PostType;
+import com.manacommunity.common.enums.PostVisibility;
+import com.manacommunity.common.enums.PostPriority;
 import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDateTime;
@@ -31,6 +32,10 @@ public record PostRequest(
     LocalDateTime eventDate,
     LocalDateTime eventEndDate,
     String eventVenue,
+    String category,
+    String status,
+    Double rating,
+    String metadata,
     List<MediaAttachment> mediaAttachments
 ) {
     public record MediaAttachment(
@@ -41,3 +46,5 @@ public record PostRequest(
         Integer sortOrder
     ) {}
 }
+
+

@@ -1,5 +1,6 @@
 package com.manacommunity.api.dto;
 
+import com.manacommunity.common.enums.*;
 public record TrendingResponse(
     Long id,
     String topic,
@@ -8,3 +9,4 @@ public record TrendingResponse(
     int engagementCount,
     double score
 ) {}
+

@@ -1,5 +1,6 @@
 package com.manacommunity.api.dto;
 
+import com.manacommunity.common.enums.*;
 import java.util.List;
 
 public record EngagementScoreResponse(
@@ -27,3 +28,4 @@ public record EngagementScoreResponse(
         String earnedAt
     ) {}
 }
+

@@ -1,5 +1,8 @@
 package com.manacommunity.api.repository;
 
+import com.manacommunity.common.enums.*;
+import com.manacommunity.api.model.*;
+import com.manacommunity.common.model.Community;
 import com.manacommunity.api.model.UserEngagementScore;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,3 +17,6 @@ public interface UserEngagementScoreRepository extends JpaRepository<UserEngagem
     @Query("SELECT e FROM UserEngagementScore e WHERE e.community.id = :communityId ORDER BY e.totalPoints DESC")
     List<UserEngagementScore> findTopContributors(Long communityId, Pageable pageable);
 }
+
+
+

@@ -1,5 +1,7 @@
 package com.manacommunity.api.repository;
 
+import com.manacommunity.common.enums.*;
+import com.manacommunity.api.model.*;
 import com.manacommunity.api.model.PostBookmark;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,3 +15,5 @@ public interface PostBookmarkRepository extends JpaRepository<PostBookmark, Long
     Page<PostBookmark> findByUserIdOrderByCreatedAtDesc(Long userId, Pageable pageable);
     void deleteByPostIdAndUserId(Long postId, Long userId);
 }
+
+

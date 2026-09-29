@@ -1,12 +1,14 @@
 package com.manacommunity.api.service;
 
+import com.manacommunity.common.enums.*;
+import com.manacommunity.common.model.Community;
 import com.manacommunity.api.dto.EngagementScoreResponse;
 import com.manacommunity.api.dto.FeedAnalyticsResponse;
 import com.manacommunity.api.dto.TrendingResponse;
 import com.manacommunity.api.exception.InvalidInputException;
 import com.manacommunity.api.model.*;
 import com.manacommunity.api.repository.*;
-import com.manacommunity.api.user.model.AppUser;
+import com.manacommunity.common.user.model.AppUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -264,3 +266,6 @@ public class EngagementService {
         badgeRepository.save(badge);
     }
 }
+
+
+

@@ -1,16 +1,19 @@
 package com.manacommunity.api.service;
 
+import com.manacommunity.common.enums.*;
+import com.manacommunity.api.model.*;
+import com.manacommunity.common.model.Community;
 import com.manacommunity.api.dto.chat.ChatContactResponse;
 import com.manacommunity.api.dto.chat.ChatMessageResponse;
 import com.manacommunity.api.dto.chat.ConversationResponse;
 import com.manacommunity.api.exception.InvalidInputException;
-import com.manacommunity.api.exception.ResourceNotFoundException;
-import com.manacommunity.api.exception.UnauthorizedActionException;
-import com.manacommunity.api.user.model.AppUser;
+import com.manacommunity.common.exception.ResourceNotFoundException;
+import com.manacommunity.common.exception.UnauthorizedActionException;
+import com.manacommunity.common.user.model.AppUser;
 import com.manacommunity.api.model.ChatMessage;
 import com.manacommunity.api.model.Conversation;
 import com.manacommunity.api.model.ConversationParticipant;
-import com.manacommunity.api.user.repository.AppUserRepository;
+import com.manacommunity.common.user.repository.AppUserRepository;
 import com.manacommunity.api.repository.ChatMessageRepository;
 import com.manacommunity.api.repository.ConversationParticipantRepository;
 import com.manacommunity.api.repository.ConversationRepository;
@@ -241,3 +244,7 @@ public class ChatService {
         return "Verified Member";
     }
 }
+
+
+
+

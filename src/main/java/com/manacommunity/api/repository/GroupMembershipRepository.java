@@ -1,5 +1,7 @@
 package com.manacommunity.api.repository;
 
+import com.manacommunity.common.enums.*;
+import com.manacommunity.api.model.*;
 import com.manacommunity.api.model.GroupMembership;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,3 +22,5 @@ public interface GroupMembershipRepository extends JpaRepository<GroupMembership
     @Query("SELECT gm.group.id FROM GroupMembership gm WHERE gm.user.id = :userId AND gm.status = 'ACTIVE'")
     List<Long> findActiveGroupIdsByUserId(Long userId);
 }
+
+

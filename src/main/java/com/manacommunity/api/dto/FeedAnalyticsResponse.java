@@ -1,5 +1,6 @@
 package com.manacommunity.api.dto;
 
+import com.manacommunity.common.enums.*;
 import java.util.List;
 import java.util.Map;
 
@@ -15,3 +16,4 @@ public record FeedAnalyticsResponse(
     List<TrendingResponse> trendingTopics,
     List<EngagementScoreResponse> topContributors
 ) {}
+

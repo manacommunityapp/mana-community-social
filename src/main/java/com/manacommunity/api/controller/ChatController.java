@@ -1,8 +1,10 @@
 package com.manacommunity.api.controller;
 
+import com.manacommunity.common.enums.*;
+import com.manacommunity.common.model.Community;
 import com.manacommunity.api.dto.chat.*;
-import com.manacommunity.api.user.model.AppUser;
-import com.manacommunity.api.user.security.UserPrincipal;
+import com.manacommunity.common.user.model.AppUser;
+import com.manacommunity.common.user.security.UserPrincipal;
 import com.manacommunity.api.service.ChatService;
 import com.manacommunity.api.user.service.LoggedInUserService;
 import lombok.RequiredArgsConstructor;
@@ -79,3 +81,6 @@ public class ChatController {
         return ResponseEntity.ok(chatService.getContacts(currentUser));
     }
 }
+
+
+

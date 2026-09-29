@@ -1,5 +1,8 @@
 package com.manacommunity.api.repository;
 
+import com.manacommunity.common.enums.*;
+import com.manacommunity.api.model.*;
+import com.manacommunity.common.model.Community;
 import com.manacommunity.api.model.Hashtag;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,3 +23,6 @@ public interface HashtagRepository extends JpaRepository<Hashtag, Long> {
     @Query("SELECT h FROM Hashtag h WHERE h.community.id = :communityId AND LOWER(h.name) LIKE LOWER(CONCAT('%', :query, '%'))")
     List<Hashtag> searchHashtags(Long communityId, String query, Pageable pageable);
 }
+
+
+
